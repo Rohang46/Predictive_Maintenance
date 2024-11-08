@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Maintenance Dashboard</title>
+    <script>
+        async function fetchData() {
+            const response = await fetch('/data');
+            const data = await response.json();
+            document.getElementById('temperature').innerText = data.temperature;
+            document.getElementById('vibration').innerText = data.vibration;
+            document.getElementById('pressure').innerText = data.pressure;
+            document.getElementById('status').innerText = data.status === 1 ? "Normal" : "Alert!";
+        }
+        setInterval(fetchData, 5000);
+    </script>
+</head>
+<body>
+    <h1>Predictive Maintenance Dashboard</h1>
+    <p>Temperature: <span id="temperature"></span></p>
+    <p>Vibration: <span id="vibration"></span></p>
+    <p>Pressure: <span id="pressure"></span></p>
+    <p>Status: <span id="status"></span></p>
+</body>
+</html>
